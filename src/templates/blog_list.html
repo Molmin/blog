@@ -52,6 +52,14 @@
         border-top: solid 2px var(--topan-colors-stress);
     }
 
+    .topan-section-shadow.article{
+        padding: 0;
+        height: 220px;
+    }
+    .topan-section-shadow:before,.topan-section-shadow:after{
+        content: " ";
+        display: table;
+    }
     .article-photo{
         overflow: hidden;
         border-radius: 10px 0 0 10px;
@@ -64,6 +72,7 @@
         height: 100%;
         object-fit: cover;
         transition: all .6s;
+        cursor: pointer;
     }
     .article-photo img:hover{
         transform: scale(1.2);
@@ -72,6 +81,8 @@
     .article-content{
         text-align: right;
         width: calc(60% - 40px);
+        height: calc(100% - 16px);
+        overflow-y: auto;
         margin-left: 20px;
         margin-right: 20px;
         margin-top: 8px;
@@ -128,7 +139,7 @@
                 <div class="topan-section-shadow article<%= blogConfig.photo?"":"-nophoto" %>">
                     <% if(blogConfig.photo){ %>
                         <div class="article-photo">
-                            <img src="/<%= System.on %>/<%= blog %>/file/<%= blogConfig.photo %>">
+                            <a href="/<%= System.on %>/<%= blog %>"><img src="/<%= System.on %>/<%= blog %>/file/<%= blogConfig.photo %>"></a>
                         </div>
                         <div class="article-content">
                             <p class="article-content-message"><i class="fa fa-regular fa-clock"></i><span><%- blogConfig.date %></span><i class="fa fa-regular fa-folder-closed"></i><a href="/<%= System.on %>/type/<%- blogConfig.type %>"><%- blogConfig.type %></a></p>

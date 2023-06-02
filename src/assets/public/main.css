@@ -31,14 +31,6 @@ pre:not(.remove-style,.ace_editor){
 .count-message{
     font-family: "font-NOTO" !important;
 }
-.topan-section-shadow.article{
-    padding: 0;
-    height: 220px;
-}
-.topan-section-shadow:before,.topan-section-shadow:after{
-    content: " ";
-    display: table;
-}
 
 a:not(.topan-header a,.topan-menu-option,.topan-footer a){
     color: black;
