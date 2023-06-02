@@ -1,0 +1,89 @@
+<style>
+    pre{
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+    #update-ghpage-error,#update-database-error{
+        color: red;
+    }
+    #update-ghpage-success,#update-database-success{
+        color: green;
+    }
+</style>
+
+<script>
+    $(document).ready(()=>{
+        $('#update-ghpage-success').text(''),$('#update-ghpage-error').text('');
+        $("#update-ghpage").click(()=>{
+            $('#update-ghpage-success').text("正在同步中……"),$('#update-ghpage-error').text('');
+            $.post(
+                "/admin/update/ghpage",
+                {message: $('#update-ghpage-message').val()},
+                (data,status)=>{
+                    if(data.error)$('#update-ghpage-success').text(''),$('#update-ghpage-error').text(data.error);
+                    else $('#update-ghpage-success').text(data.message),$('#update-ghpage-error').text('');
+                }
+            );
+        });
+        $('#update-database-success').text(''),$('#update-database-error').text('');
+        $("#update-database").click(()=>{
+            $('#update-database-success').text("正在同步中……"),$('#update-database-error').text('');
+            $.post(
+                "/admin/update/db",
+                {message: $('#update-database-message').val()},
+                (data,status)=>{
+                    if(data.error)$('#update-database-success').text(''),$('#update-database-error').text(data.error);
+                    else $('#update-database-success').text(data.message),$('#update-database-error').text('');
+                }
+            );
+        });
+    });
+</script>
+
+<div class="row">
+    <div class="column-two-fifth">
+        <div style="padding-right: 10px;">
+            <div class="topan-section-shadow">
+                <a class="topan-menu-option" href="/admin/settings"><i class="fa fa-solid fa-gear"></i>&nbsp;&nbsp;系统设置</a>
+            </div>
+            <br>
+            <div class="topan-section-shadow">
+                <h2>更新 GitHub 页面</h2>
+                <p>更新 GitHub Page 上显示的内容。这将会更新到 <code class="hljs"><%= System.repository.ghpage.repo %></code> 的 <code class="hljs"><%= System.repository.ghpage.branch %></code> 分支。</p>
+                <input id="update-ghpage-message" type="text" placeholder="Commit Message" value="Update GitHub Page">
+                <p>
+                    <button id="update-ghpage" class="topan-button-emphasize topan-button-default">立即更新</button>
+                    &nbsp;&nbsp;
+                    <span id="update-ghpage-error"></span>
+                    <span id="update-ghpage-success"></span>
+                </p>
+            </div>
+            <br>
+            <div class="topan-section-shadow">
+                <h2>更新数据库</h2>
+                <p>将当前数据上传到 GitHub。这将会更新到 <code class="hljs"><%= System.repository.db.repo %></code> 的 <code class="hljs"><%= System.repository.db.branch %></code> 分支。</p>
+                <input id="update-database-message" type="text" placeholder="Commit Message" value="Update Database to GitHub">
+                <p>
+                    <button id="update-database" class="topan-button-emphasize topan-button-default">立即更新</button>
+                    &nbsp;&nbsp;
+                    <span id="update-database-error"></span>
+                    <span id="update-database-success"></span>
+                </p>
+            </div>
+            <br>
+            <div class="topan-section-shadow">
+                <h2>下载数据库</h2>
+                <p>从 GitHub 下载数据库。</p>
+                <p><button id="download-database" class="topan-button-emphasize topan-button-default">立即下载</button></p>
+            </div>
+        </div>
+    </div>
+    <div class="column-three-fifth">
+        <div style="padding-left: 10px;">
+            <div class="topan-section-shadow">
+                <h2>服务器日志</h2>
+                <pre><code class="hljs"><%= logs %></code></pre>
+            </div>
+        </div>
+    </div>
+</div>

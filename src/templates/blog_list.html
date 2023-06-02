@@ -1,0 +1,104 @@
+<style>
+    .page-select-up,.page-select-down{
+        box-sizing: inherit;
+        display: block;
+    }
+    ul{
+        font-size: 14px;
+        text-align: center;
+        list-style: none;
+        margin: 0;
+    }
+    ul>li{
+        display: inline-block;
+        padding: 6px 10px;
+        transition-duration: 0.15s;
+        cursor: pointer;
+        color: grey;
+    }
+    .page-select-up>ul>li{
+        border-bottom: solid 2px rgb(175, 175, 175);
+    }
+    .page-select-down>ul>li{
+        border-top: solid 2px rgb(175, 175, 175);
+    }
+    ul>span{
+        padding: 6px;
+        color: grey;
+    }
+    ul>li:hover{
+        background-color: rgba(0,0,0,0.05);
+        color: var(--topan-colors-main);
+    }
+    .page-select-up>ul>li:hover{
+        border-bottom: solid 2px var(--topan-colors-main);
+    }
+    .page-select-down>ul>li:hover{
+        border-top: solid 2px var(--topan-colors-main);
+    }
+    ul>li.topan-tab-showed{
+        color: var(--topan-colors-stress);
+    }
+    .page-select-up>ul>li.topan-tab-showed{
+        border-bottom: solid 2px var(--topan-colors-stress);
+    }
+    .page-select-down>ul>li.topan-tab-showed{
+        border-top: solid 2px var(--topan-colors-stress);
+    }
+    .page-select-up>ul>li.topan-tab-showed:hover{
+        border-bottom: solid 2px var(--topan-colors-stress);
+    }
+    .page-select-down>ul>li.topan-tab-showed:hover{
+        border-top: solid 2px var(--topan-colors-stress);
+    }
+</style>
+
+<div class="row">
+    <div class="column-one-fifth">
+        <div style="padding-right: 12px;">
+            <div class="topan-section-shadow sidebar">
+                <img class="avatar" src="https://molmin.github.io/file/image/head.png">
+                <h2 class="name">Milmon</h2>
+                <p class="signature">ZJ MOer &amp; OIer</p>
+                <a class="topan-menu-option" href="/<%= System.on %>"><i class="fa fa-solid fa-home"></i>&nbsp;&nbsp;首页</a>
+                <a class="topan-menu-option" href="/<%= System.on %>/types"><i class="fa fa-solid fa-inbox"></i>&nbsp;&nbsp;分类</a>
+                <a class="topan-menu-option" href="/<%= System.on %>/archives"><i class="fa fa-regular fa-folder-closed"></i>&nbsp;&nbsp;归档</a>
+                <% if(isadmin){ %>
+                    <a class="topan-menu-option" href="/admin/create"><i class="fa fa-solid fa-plus"></i>&nbsp;&nbsp;发布博文</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <div class="column-four-fifth">
+        <div style="padding-left: 12px;">
+            <p class="count-message">共 <span id="count"><%= blogList.length %></span> 篇文章</p>
+            <% var flag=false;
+            blogList.forEach((blog,blogIndex)=>{
+                var blogConfig=JSON.parse(fs.readFileSync(`data/${blog}/config.json`,'utf8'));
+                if(flag){
+                    %><br><%
+                }
+                else flag=true; %>
+                <div class="topan-section-shadow article<%= blogConfig.photo?"":"-nophoto" %>">
+                    <% if(blogConfig.photo){ %>
+                        <div class="article-photo">
+                            <img src="/<%= System.on %>/<%= blog %>/file/<%= blogConfig.photo %>">
+                        </div>
+                        <div class="article-content">
+                            <p class="article-content-message"><i class="fa fa-regular fa-clock"></i><span><%- blogConfig.date %></span><i class="fa fa-regular fa-folder-closed"></i><a href="/<%= System.on %>/type/<%- blogConfig.type %>"><%- blogConfig.type %></a></p>
+                            <h2 class="article-content-title"><a href="/<%= System.on %>/<%= blog %>"><%- MarkdownIt.renderInline(blogConfig.title) %></a></h2>
+                            <p class="article-content-abstract"><%- MarkdownIt.renderInline(blogConfig.abstract) %><a href="/<%= System.on %>/<%= blog %>" class="article-content-abstract-readmore">阅读更多 »</a></p>
+                        </div>
+                    <% }
+                    else{ %>
+                        <div class="article-content-nophoto">
+                            <p class="article-content-message"><i class="fa fa-regular fa-clock"></i><span><%- blogConfig.date %></span><i class="fa fa-regular fa-folder-closed"></i><a href="/<%= System.on %>/type/<%- blogConfig.type %>"><%- blogConfig.type %></a></p>
+                            <h2 class="article-content-title"><a href="/<%= System.on %>/<%= blog %>"><%- MarkdownIt.renderInline(blogConfig.title) %></a></h2>
+                            <p class="article-content-abstract"><%- MarkdownIt.renderInline(blogConfig.abstract) %><a href="/<%= System.on %>/<%= blog %>" class="article-content-abstract-readmore">阅读更多 »</a></p>
+                        </div>
+                    <% } %>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</div>

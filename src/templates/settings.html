@@ -1,0 +1,88 @@
+<script src="/file/ace/ace.js"></script>
+<script src="/file/ace/ext-language_tools.js"></script>
+<style>
+    #system-port,#system-dir{
+        width: 150px;
+    }
+    #system-title{
+        width: 200px;
+    }
+    #system-eachPage{
+        width: 100px;
+    }
+    #system-db-repo,#system-ghpage-repo{
+        width: 250px;
+    }
+    #system-db-branch,#system-ghpage-branch{
+        width: 100px;
+    }
+    .tip{
+        color: grey;
+        font-size: 85%;
+    }
+</style>
+<script>
+    $(document).ready(()=>{
+        var editor_commentHtml=ace.edit("system-comment");
+        editor_commentHtml.setTheme("ace/theme/clouds");
+        editor_commentHtml.session.setMode("ace/mode/html");
+        editor_commentHtml.setFontSize(18);
+        editor_commentHtml.setReadOnly(false); 
+        editor_commentHtml.setOption("wrap", "free")
+        ace.require("ace/ext/language_tools");
+        editor_commentHtml.setOptions({
+            enableBasicAutocompletion: true,
+            enableSnippets: true,
+            enableLiveAutocompletion: true
+        });
+        var editor_about=ace.edit("system-about");
+        editor_about.setTheme("ace/theme/clouds");
+        editor_about.session.setMode("ace/mode/markdown");
+        editor_about.setFontSize(18);
+        editor_about.setReadOnly(false); 
+        editor_about.setOption("wrap", "free")
+        ace.require("ace/ext/language_tools");
+        editor_about.setOptions({
+            enableBasicAutocompletion: true,
+            enableSnippets: true,
+            enableLiveAutocompletion: true
+        });
+    });
+</script>
+
+<div class="row">
+    <div class="column-three-fifth">
+        <div style="padding-right: 10px;">
+            <div class="topan-section-shadow">
+                <h2>系统设置</h2>
+                <blockquote class="topan-blockquote-tip">
+                    <p>关于后台密码的设置请按照文档操作在服务器处进行。</p>
+                </blockquote>
+                <p><b>端口号：</b><input type="number" placeholder="8299" id="system-port" value="<%= System.port %>"></input></p>
+                <p class="tip">请确保端口未被占用，该项的修改重启后生效。</p>
+                <p><b>子目录：</b><input type="text" placeholder="OI" id="system-dir" value="<%= System.on %>"></input></p>
+                <p class="tip">表示页面部署的文件夹名称，该项的修改重启后生效。</p>
+                <p><b>页面标题：</b><input type="text" placeholder="OI Problems" id="system-title" value="<%= System.title %>"></input></p>
+                <p class="tip">表示标签页标题后缀以及工具栏文字，该项的修改立刻生效。</p>
+                <p><b>博文列表</b></p>
+                <p>每页显示博文数量：<input type="number" placeholder="10" id="system-eachPage" value="<%= System.eachPage %>"></input></p>
+                <p class="tip">建议值：8 至 15，该项的修改立刻生效。</p>
+                <p><b>仓库地址与分支名</b></p>
+                <p class="tip">用于同步数据库与 <a href="https://pages.github.com/">GitHub Pages</a>，该项的修改立刻生效。</p>
+                <p>（数据库）仓库地址：<input type="text" placeholder="git@github.com:<user>/<repo>.git" id="system-db-repo" value="<%= System.repository.db.repo %>"></input>&nbsp;&nbsp;&nbsp;分支名：<input type="text" placeholder="data" id="system-db-branch" value="<%= System.repository.db.branch %>"></input></p>
+                <p>（GitHub Pages）仓库地址：<input type="text" placeholder="git@github.com:<user>/<repo>.git" id="system-ghpage-repo" value="<%= System.repository.ghpage.repo %>"></input>&nbsp;&nbsp;&nbsp;分支名：<input type="text" placeholder="data" id="system-ghpage-branch" value="<%= System.repository.ghpage.branch %>"></input></p>
+                <p><b>关于</b></p>
+                <p class="tip">将在顶栏的关于页面显示，该项的修改立刻生效。</p>
+                <pre id="system-about" class="ace_editor" style="min-height: 450px;"><textarea class="ace_text-input"><%= fs.readFileSync('data/readme.md','utf8') %></textarea></pre>
+                <p><b>评论区</b></p>
+                <p>HTML 代码：</p>
+                <p class="tip">推荐使用 <a href="https://giscus.app/zh-CN">giscus</a>，<a href="https://github.com/gitalk/gitalk#install">Gitalk</a> 或者 <a href="https://github.com/utterance/utterances">utteranc.es</a>，该项的修改立刻生效。</p>
+                <pre id="system-comment" class="ace_editor" style="min-height: 300px;"><textarea class="ace_text-input"><%= System.commentHtml %></textarea></pre>
+            </div>
+        </div>
+    </div>
+    <div class="column-two-fifth">
+        <div style="padding-left: 10px;">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<script>
+    $(document).ready(()=>{
+        $("#user-login").click(()=>{
+            $.post("/admin/login/try",
+                {
+                    password: $('#login-password').val()
+                },
+                (data,status)=>{
+                    if(data.error!=undefined)$('#login-error').text(data.error);
+                    else location.pathname="";
+                }
+            );
+        });
+    });
+</script>
+<style>
+    #login-password{
+        width: 250px;
+    }
+</style>
+<div style="text-align: center;">
+    <br>
+    <h2 style="letter-spacing: 1px;">后台登录</h2>
+    <br>
+    <p><input placeholder="Password" type="password" id="login-password"></input></p>
+    <p style="color: red;" id="login-error"></p>
+    <br>
+    <p><button id="user-login" class="topan-button-emphasize topan-button-default">登录</button></p>
+    <br>
+</div>
