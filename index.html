@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title id="title">文章列表 - Milmon's Blog</title>
+        <link rel="shortcut icon" type="image/x-icon" href="https://topan-dev.github.io/TopanUI/favicon.ico">
+        <script src="https://topan-dev.github.io/TopanUI/src/jquery.js"></script>
+        <link rel="stylesheet" href="https://topan-dev.github.io/TopanUI/topan.css">
+        <script src="https://topan-dev.github.io/TopanUI/topan.js"></script>
+        <script src="https://kit.fontawesome.com/0d8081718e.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <script src="/blog/pub/busuanzi.pure.mini.js"></script>
+        <script src="/blog/pub/main.js"></script>
+        <link rel="stylesheet" href="/blog/pub/main.css">
+        
+    </head>
+    <body>
+        <div class="topan-header">
+            <div class="topan-header-home">
+                <a href="/blog">
+                    <button class="topan-button-ordinary topan-button-commonly topan-button-header-round-left">
+                        <i class="fa fa-home"></i>
+                    </button>
+                </a>
+            </div>
+            <div class="topan-header-left">
+                <span class="topan-header-text">Milmon's Blog&nbsp;</span>
+                <a href="/blog/about">
+                    <span class="topan-button-ordinary topan-button-commonly topan-button-header-block">
+                        <i class="fa fa-solid fa-circle-info"></i>
+                        <span>&nbsp;关于</span>
+                    </span>
+                </a>
+                
+                
+            </div>
+            <div class="topan-header-right">
+            </div>
+        </div>
+        <div class="topan-outer">
+            <div class="topan-page">
+                <div class="topan-mainpage-auto">
+                    <br>
+                    <style>
+    .page-select-up,.page-select-down{
+        box-sizing: inherit;
+        display: block;
+    }
+    ul{
+        font-size: 14px;
+        text-align: center;
+        list-style: none;
+        margin: 0;
+    }
+    ul>li{
+        display: inline-block;
+        padding: 6px 10px;
+        transition-duration: 0.15s;
+        cursor: pointer;
+        color: grey;
+    }
+    .page-select-up>ul>li{
+        border-bottom: solid 2px rgb(175, 175, 175);
+    }
+    .page-select-down>ul>li{
+        border-top: solid 2px rgb(175, 175, 175);
+    }
+    ul>span{
+        padding: 6px;
+        color: grey;
+    }
+    ul>li:hover{
+        background-color: rgba(0,0,0,0.05);
+        color: var(--topan-colors-main);
+    }
+    .page-select-up>ul>li:hover{
+        border-bottom: solid 2px var(--topan-colors-main);
+    }
+    .page-select-down>ul>li:hover{
+        border-top: solid 2px var(--topan-colors-main);
+    }
+    ul>li.topan-tab-showed{
+        color: var(--topan-colors-stress);
+    }
+    .page-select-up>ul>li.topan-tab-showed{
+        border-bottom: solid 2px var(--topan-colors-stress);
+    }
+    .page-select-down>ul>li.topan-tab-showed{
+        border-top: solid 2px var(--topan-colors-stress);
+    }
+    .page-select-up>ul>li.topan-tab-showed:hover{
+        border-bottom: solid 2px var(--topan-colors-stress);
+    }
+    .page-select-down>ul>li.topan-tab-showed:hover{
+        border-top: solid 2px var(--topan-colors-stress);
+    }
+</style>
+
+<div class="row">
+    <div class="column-one-fifth">
+        <div style="padding-right: 12px;">
+            <div class="topan-section-shadow sidebar">
+                <img class="avatar" src="https://molmin.github.io/file/image/head.png">
+                <h2 class="name">Milmon</h2>
+                <p class="signature">ZJ MOer &amp; OIer</p>
+                <a class="topan-menu-option" href="/blog"><i class="fa fa-solid fa-home"></i>&nbsp;&nbsp;首页</a>
+                <a class="topan-menu-option" href="/blog/types"><i class="fa fa-solid fa-inbox"></i>&nbsp;&nbsp;分类</a>
+                <a class="topan-menu-option" href="/blog/archives"><i class="fa fa-regular fa-folder-closed"></i>&nbsp;&nbsp;归档</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="column-four-fifth">
+        <div style="padding-left: 12px;">
+            <p class="count-message">共 <span id="count">2</span> 篇文章</p>
+            
+                <div class="topan-section-shadow article">
+                    
+                        <div class="article-photo">
+                            <img src="/blog/install_git_npm_nodejs/file/pic.png">
+                        </div>
+                        <div class="article-content">
+                            <p class="article-content-message"><i class="fa fa-regular fa-clock"></i><span>2023-06-02</span><i class="fa fa-regular fa-folder-closed"></i><a href="/blog/type/技术">技术</a></p>
+                            <h2 class="article-content-title"><a href="/blog/install_git_npm_nodejs">Git &amp; npm &amp; Node.js 安装教程</a></h2>
+                            <p class="article-content-abstract">我们常常因为网络、系统环境原因而无法成功安装一些不能缺少的软件，例如 Git，npm，Node.js 等。本文将介绍一种上述三款软件的安装方案。<a href="/blog/install_git_npm_nodejs" class="article-content-abstract-readmore">阅读更多 »</a></p>
+                        </div>
+                    
+                </div>
+            <br>
+                <div class="topan-section-shadow article-nophoto">
+                    
+                        <div class="article-content-nophoto">
+                            <p class="article-content-message"><i class="fa fa-regular fa-clock"></i><span>2022-10-14</span><i class="fa fa-regular fa-folder-closed"></i><a href="/blog/type/技术">技术</a></p>
+                            <h2 class="article-content-title"><a href="/blog/how_to_use_git">Git 使用教程</a></h2>
+                            <p class="article-content-abstract">Git 是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。本文将介绍 Git 的使用方法。<a href="/blog/how_to_use_git" class="article-content-abstract-readmore">阅读更多 »</a></p>
+                        </div>
+                    
+                </div>
+            
+        </div>
+    </div>
+</div>
+                    <br>
+                </div>
+                <footer class="topan-footer">
+                    <p></p>
+                    <p style="text-align: center; color: #555; font-size: 12px;">
+                        Powered by <a href="https://github.com/Molmin/OI.git">Molmin/OI</a>&nbsp;&nbsp;&nbsp;
+                        © 2023 <a href="https://github.com/Molmin/">Milmon</a>&nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-solid fa-eye"></i> 访客数量：<span id="busuanzi_value_site_pv">0</span>
+                    </p>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>
+    
