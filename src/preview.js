@@ -34,6 +34,21 @@ router.get('/about',(req,res)=>{
     });
 });
 
+router.get('/:blogId',(req,res)=>{
+    if(fs.existsSync(`data/${req.params.blogId}/config.json`)){
+        var blogConfig=JSON.parse(fs.readFileSync(`data/${req.params.blogId}/config.json`));
+        blogConfig.blogId=req.params.blogId;
+        ejs.renderFile("./src/templates/blog_detail.html",
+            {isadmin: req.logined, fs, blogConfig, System, MarkdownIt},(err,HTML)=>{
+            res.send(Template({title: `${blogConfig.title}`,
+                               header: ``,
+                               preview: true,
+                               isadmin: req.logined
+                              },HTML));
+        });
+    }
+    else res.sendStatus(404);
+});
 router.get('/:blogId/file/:fileName',(req,res)=>{
     if(fs.existsSync(`data/${req.params.blogId}/${req.params.fileName}`))
         res.sendFile(`data/${req.params.blogId}/${req.params.fileName}`,{root: process.cwd()},err=>{});

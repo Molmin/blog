@@ -1,0 +1,33 @@
+<style>
+    .sidebar{
+        text-align: center;
+    }
+    .avatar{
+        margin-top: 15px;
+        width: 160px; height: 160px;
+        border-radius: 50%;
+        box-shadow: 0 2px 8px -1px rgb(165, 165, 165);
+        transition: box-shadow .1s ease-in-out, transform 0.8s ease;
+    }
+    .avatar:hover{
+        box-shadow: -1px -1px 7px 2px rgb(156, 156, 156);
+        transform: rotate(360deg);
+    }
+    .name{
+        margin-top: 5px;
+        font-family: "font-NOTO" !important;
+        font-size: 160%;
+    }
+    .signature{
+        margin-top: -10px;
+        font-family: "font-NOTO" !important;
+        font-size: 90%;
+    }
+</style>
+
+<img class="avatar" src="https://molmin.github.io/file/image/head.png">
+<h2 class="name">Milmon</h2>
+<p class="signature">ZJ MOer &amp; OIer</p>
+<a class="topan-menu-option" href="/<%= System.on %>"><i class="fa fa-solid fa-home"></i>&nbsp;&nbsp;首页</a>
+<a class="topan-menu-option" href="/<%= System.on %>/types"><i class="fa fa-solid fa-inbox"></i>&nbsp;&nbsp;分类</a>
+<a class="topan-menu-option" href="/<%= System.on %>/archives"><i class="fa fa-regular fa-folder-closed"></i>&nbsp;&nbsp;归档</a>

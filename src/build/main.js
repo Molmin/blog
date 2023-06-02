@@ -31,4 +31,17 @@ ejs.renderFile("./src/templates/blog_list.html",
     );
 });
 
+ejs.renderFile(
+    "./src/templates/about.html",
+    {html: MarkdownIt.render(fs.readFileSync('data/readme.md','utf8'))},
+    (err,HTML)=>{
+        fs.writeFileSync("dist/about.html",
+            Template({title: `关于`,
+                      header: ``,
+                      onabout: true
+                     },HTML)
+        );
+    }
+);
+
 }
