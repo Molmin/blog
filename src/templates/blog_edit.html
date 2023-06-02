@@ -1,0 +1,62 @@
+<script src="/file/ace/ace.js"></script>
+<script src="/file/ace/ext-language_tools.js"></script>
+<script>
+    $(document).ready(()=>{
+        editor=ace.edit("code");
+        theme="clouds"
+        language="markdown"
+        editor.setTheme("ace/theme/" + theme);
+        editor.session.setMode("ace/mode/" + language);
+        editor.setFontSize(18);
+        editor.setReadOnly(false); 
+        editor.setOption("wrap", "free")
+        ace.require("ace/ext/language_tools");
+        editor.setOptions({
+            enableBasicAutocompletion: true,
+            enableSnippets: true,
+            enableLiveAutocompletion: true
+        });
+    });
+</script>
+
+<style>
+    #blogId{
+        width: calc(20%);
+    }
+    #title{
+        width: calc(80% - 10px);
+    }
+</style>
+
+<div class="row">
+    <div class="column-one-fifth">
+        <div style="padding-right: 12px;">
+            <div class="topan-section-shadow sidebar">
+                <%- include('./side.html') %>
+                <a class="topan-menu-option" href="/<%= System.on %>/<%= blogConfig.blogId %>"><i class="fa fa-regular fa-flag"></i>&nbsp;&nbsp;查看原文</a>
+            </div>
+        </div>
+    </div>
+    <div class="column-four-fifth">
+        <div style="padding-left: 12px;">
+            <div class="topan-section-shadow article">
+                <p>
+                    <input id="blogId" type="text" placeholder="文章地址" value="<%= blogConfig.blogId %>">
+                    <input id="title" type="text" placeholder="文章标题" value="<%= blogConfig.title %>">
+                </p>
+                <p>
+                    <input id="date" type="date" value="<%= blogConfig.date %>">
+                    <input id="hidden" type="checkbox" value="<%= blogConfig.hidden %>">
+                    文章类型：
+                    <select name="type" id="type">
+                        <% for(var key in types){ %>
+                            <option value="<%= key %>"><%= types[key] %></option>
+                        <% } %>
+                    </select>
+                </p>
+                <pre id="code" class="ace_editor" style="min-height: 400px;">
+<textarea class="ace_text-input" id="sys"><%= fs.readFileSync(`data/${blogConfig.blogId}/index.md`,'utf8') %></textarea></pre>
+            </div>
+        </div>
+    </div>
+</div>

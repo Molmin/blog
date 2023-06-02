@@ -41,3 +41,37 @@ a:not(.topan-header a,.topan-menu-option,.topan-footer a):hover{
 a:not(.topan-header a,.topan-menu-option,.topan-footer a):hover::after{
     width: 0 !important;
 }
+
+.topan-mainpage-auto{
+    width: 70%;
+    max-width: 950px;
+}
+@media screen and (max-width: 750px){
+    .topan-mainpage-auto{
+        width: 80%;
+    }
+}
+@media screen and (max-width: 1300px){
+    .topan-header>.topan-header-left{
+        position: relative;
+        display: inline-block;
+        left: 5px;
+    }
+    .topan-header>.topan-header-right{
+        position: absolute;
+        display: inline-block;
+        right: 5px;
+    }
+}
+@media screen and (min-width: 1300px){
+    .topan-header>.topan-header-left{
+        position: absolute;
+        display: inline-block;
+        left: calc(50% - 475px);
+    }
+    .topan-header>.topan-header-right{
+        position: absolute;
+        display: inline-block;
+        right: calc(50% - 475px);
+    }
+}

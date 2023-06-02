@@ -4,6 +4,7 @@ const ejs=require('ejs');
 const fs=require('fs');
 const Template=require('./template.js');
 var System=JSON.parse(fs.readFileSync('./data/system.json'));
+const Type=require('./lib/type.js');
 const Admin=require('./lib/admin.js');
 const URL=require('url');
 const deletedir=require('./lib/deletedir.js');
@@ -80,6 +81,7 @@ router.get('/settings',(req,res)=>{
 });
 
 router.get('/login',(req,res)=>{
+    System=JSON.parse(fs.readFileSync('./data/system.json'));
     if(req.logined){
         res.redirect("/");
         return;
@@ -113,6 +115,23 @@ router.get('/logout',(req,res)=>{
         else res.redirect(direct.href);
     }
     else res.redirect('/');
+});
+
+router.get('/:blogId/edit',(req,res)=>{
+    if(fs.existsSync(`data/${req.params.blogId}/config.json`)){
+        System=JSON.parse(fs.readFileSync('./data/system.json'));
+        var blogConfig=JSON.parse(fs.readFileSync(`data/${req.params.blogId}/config.json`));
+        blogConfig.blogId=req.params.blogId;
+        ejs.renderFile("./src/templates/blog_edit.html",{System, fs, blogConfig, types: Type()},(err,HTML)=>{
+            res.send(Template({title: `编辑文章`,
+                            header: ``,
+                            preview: true,
+                            onadmin: true,
+                            isadmin: req.logined
+                            },HTML));
+        });
+    }
+    else res.sendStatus(404);
 });
 
 module.exports=router;

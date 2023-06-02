@@ -94,11 +94,11 @@
         line-height: 80%;
         color: rgb(105, 105, 105);
     }
-    .article-content-message span{
-        margin: 0 15px 0 5px;
-    }
-    .article-content-message a{
+    .article-content-message span,.article-content-message a{
         margin: 0 0 0 5px;
+    }
+    .article-content-message i:not(:nth-child(1)){
+        margin: 0 0 0 15px;
     }
     .article-content-title{
         font-family: "font-NOTO" !important;
@@ -142,14 +142,18 @@
                             <a href="/<%= System.on %>/<%= blog %>"><img src="/<%= System.on %>/<%= blog %>/file/<%= blogConfig.photo %>"></a>
                         </div>
                         <div class="article-content">
-                            <p class="article-content-message"><i class="fa fa-regular fa-clock"></i><span><%- blogConfig.date %></span><i class="fa fa-regular fa-folder-closed"></i><a href="/<%= System.on %>/type/<%- blogConfig.type %>"><%- blogConfig.type %></a></p>
+                            <p class="article-content-message">
+                                <i class="fa fa-regular fa-folder-closed"></i><a href="/<%= System.on %>/type/<%= blogConfig.type %>"><%= types[blogConfig.type] %></a><i class="fa fa-regular fa-calendar-days"></i><span><%= blogConfig.date %></span><i class="fa fa-regular fa-clock"></i><span><%= "? 字" %></span><i class="fa fa-regular fa-clock"></i><span><%= "? 分钟" %></span>
+                            </p>
                             <h2 class="article-content-title"><a href="/<%= System.on %>/<%= blog %>"><%- MarkdownIt.renderInline(blogConfig.title) %></a></h2>
                             <p class="article-content-abstract"><%- MarkdownIt.renderInline(blogConfig.abstract) %><a href="/<%= System.on %>/<%= blog %>" class="article-content-abstract-readmore">阅读更多 »</a></p>
                         </div>
                     <% }
                     else{ %>
                         <div class="article-content-nophoto">
-                            <p class="article-content-message"><i class="fa fa-regular fa-clock"></i><span><%- blogConfig.date %></span><i class="fa fa-regular fa-folder-closed"></i><a href="/<%= System.on %>/type/<%- blogConfig.type %>"><%- blogConfig.type %></a></p>
+                            <p class="article-content-message">
+                                <i class="fa fa-regular fa-folder-closed"></i><a href="/<%= System.on %>/type/<%= blogConfig.type %>"><%= types[blogConfig.type] %></a><i class="fa fa-regular fa-calendar-days"></i><span><%= blogConfig.date %></span><i class="fa fa-regular fa-clock"></i><span><%= "? 字" %></span><i class="fa fa-regular fa-clock"></i><span><%= "? 分钟" %></span>
+                            </p>
                             <h2 class="article-content-title"><a href="/<%= System.on %>/<%= blog %>"><%- MarkdownIt.renderInline(blogConfig.title) %></a></h2>
                             <p class="article-content-abstract"><%- MarkdownIt.renderInline(blogConfig.abstract) %><a href="/<%= System.on %>/<%= blog %>" class="article-content-abstract-readmore">阅读更多 »</a></p>
                         </div>

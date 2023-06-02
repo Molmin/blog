@@ -1,3 +1,118 @@
+<style>
+    .topan-section-shadow.article{
+        padding: 0;
+    }
+    .article>.article-photo{
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+        border-radius: 10px 10px 0 0;
+    }
+    .article>.article-photo>img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all .6s;
+    }
+    .article>.article-photo>img:hover{
+        transform: scale(1.2);
+    }
+    .article>.article-content{
+        padding: 7px 18px;
+    }
+    .article-content-title{
+        font-family: "font-NOTO" !important;
+        font-size: 160%;
+        line-height: 150%;
+    }
+    
+    .article-content-message{
+        font-family: "font-NOTO" !important;
+        line-height: 80%;
+        color: rgb(105, 105, 105);
+    }
+    .article-content-message span,.article-content-message a{
+        margin: 0 0 0 5px;
+    }
+    .article-content-message i:not(:nth-child(1)){
+        margin: 0 0 0 15px;
+    }
+    .article-content>div:nth-child(3){
+        margin-top: 40px;
+    }
+    .article-content>div:nth-child(3)>h1,
+    .article-content>div:nth-child(3)>h2,
+    .article-content>div:nth-child(3)>h3,
+    .article-content>div:nth-child(3)>h4,
+    .article-content>div:nth-child(3)>h5,
+    .article-content>div:nth-child(3)>h6{
+        font-family: "font-NOTO" !important;
+    }
+    .article-content-type>a{
+        color: grey !important;
+        font-size: 80%;
+    }
+    .article-content-type{
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .cc{
+        margin-top: -10px;
+        background-color: #eee;
+        padding: 7px 18px;
+        overflow: hidden;
+        border-radius: 0 0 10px 10px;
+    }
+    .cc-main{
+        border: 16px solid black;
+        border-radius: 50%;
+        opacity: .1;
+        width: 150px; height: 150px;
+        vertical-align: middle;
+        position: relative;
+        float: right;
+        top: -40px;
+        right: -50px;
+        box-sizing: border-box;
+    }
+    .cc-main::before,.cc-main::after{
+        content: "";
+        border: 12px solid black;
+        border-right-color: transparent;
+        border-radius: 50%;
+        top: 37.5px;
+        width: 18px; height: 18px;
+        position: absolute;
+    }
+    .cc-main::before{
+        left: 20px;
+    }
+    .cc-main::after{
+        right: 20px;
+    }
+    .cc>p:nth-child(2){
+        font-family: "font-NOTO";
+        font-size: 115%;
+    }
+    .cc>p:nth-child(3)>a{
+        text-decoration: underline;
+        font-family: "font-firacode";
+        font-size: 85%;
+    }
+    .cc>p:nth-child(4)>b:nth-child(3){
+        margin: 0 0 0 25px;
+    }
+</style>
+
+<script>
+    $(document).ready(()=>{
+        var cc_article_link=$(".cc>p:nth-child(3)>a");
+        cc_article_link.attr("href",window.location.href);
+        cc_article_link.text(window.location.href);
+    });
+</script>
+
 <div class="row">
     <div class="column-one-fifth">
         <div style="padding-right: 12px;">
@@ -12,6 +127,28 @@
     <div class="column-four-fifth">
         <div style="padding-left: 12px;">
             <div class="topan-section-shadow article">
+                <% if(blogConfig.photo){ %>
+                <div class="article-photo">
+                    <img src="/<%= System.on %>/<%= blogConfig.blogId %>/file/<%= blogConfig.photo %>">
+                </div>
+                <% } %>
+                <div class="article-content">
+                    <h2 class="article-content-title"><%= blogConfig.title %></h2>
+                    <p class="article-content-message">
+                        <i class="fa fa-regular fa-folder-closed"></i><a href="/<%= System.on %>/type/<%= blogConfig.type %>"><%= types[blogConfig.type] %></a><i class="fa fa-regular fa-calendar-days"></i><span><%= blogConfig.date %></span><i class="fa fa-regular fa-file-word"></i><span><%= "? 字" %></span><i class="fa fa-regular fa-clock"></i><span><%= "? 分钟" %></span><i class="fa fa-regular fa-eye"></i><span id="busuanzi_value_page_pv">0</span>
+                    </p>
+                    <div>
+                        <%- MarkdownIt.render(fs.readFileSync(`data/${blogConfig.blogId}/index.md`,'utf8')) %>
+                    </div>
+                    <p class="article-content-type"><a href="/<%= System.on %>/type/<%= blogConfig.type %>"># <%= types[blogConfig.type] %></a></p>
+                </div>
+                <div class="cc">
+                    <i class="cc-main"></i>
+                    <p><b><%= blogConfig.title %></b></p>
+                    <p><a></a></p>
+                    <p><b>本文作者：</b><a href="<%= blogConfig.writer?blogConfig.writer.url:System.default.writer.url %>"><%= blogConfig.writer?blogConfig.writer.name:System.default.writer.name %></a><b>发布时间：</b><%= blogConfig.date %></p>
+                    <p><b>版权声明：</b><%- System.default.copyrightNotice %></p>
+                </div>
             </div>
         </div>
     </div>
