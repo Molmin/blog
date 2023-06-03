@@ -1,9 +1,18 @@
-*:not(.topan-header *,.article *,.article-nophoto *,i,.count-message,.bigtitle){
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Source Han Sans SC,Noto Sans CJK SC,Microsoft YaHei,WenQuanYi Micro Hei,WenQuanYi Zen Hei,Helvetica Neue,Arial,sans-serif;
-}
 @font-face{
     font-family: font-firacode;
     src: url("./FiraCode-Regular.ttf");
+}
+@font-face{
+    font-family: font-LXGW;
+    src: url("./LXGWWenKai-Bold.ttf");
+}
+@font-face{
+    font-family: font-NOTO;
+    src: url("./noto-serif-sc-chinese-simplified-400-normal.ttf");
+}
+
+*:not(.topan-header *,.article *,.article-nophoto *,i,.count-message,.bigtitle){
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Source Han Sans SC,Noto Sans CJK SC,Microsoft YaHei,WenQuanYi Micro Hei,WenQuanYi Zen Hei,Helvetica Neue,Arial,sans-serif;
 }
 code,pre.ace_editor{
     font-family: "font-firacode";
@@ -20,107 +29,56 @@ pre:not(.remove-style,.ace_editor){
 .topan-header *:not(i){
     font-family: "font-NOTO" !important;
 }
-.sidebar{
-    text-align: center;
-}
-.avatar{
-    margin-top: 15px;
-    width: 160px; height: 160px;
-    border-radius: 50%;
-    box-shadow: 0 2px 8px -1px rgb(165, 165, 165);
-    transition: box-shadow .1s ease-in-out, transform 0.8s ease;
-}
-.avatar:hover{
-    box-shadow: -1px -1px 7px 2px rgb(156, 156, 156);
-    transform: rotate(360deg);
-}
-.name{
-    margin-top: 5px;
-    font-family: "font-NOTO" !important;
-    font-size: 160%;
-}
-.signature{
-    margin-top: -10px;
-    font-family: "font-NOTO" !important;
-    font-size: 90%;
-}
 .count-message{
     font-family: "font-NOTO" !important;
 }
-.topan-section-shadow.article{
-    padding: 0;
-    height: 220px;
-}
-.topan-section-shadow:before,.topan-section-shadow:after{
-    content: " ";
-    display: table;
-}
 
-.article-photo{
-    overflow: hidden;
-    border-radius: 10px 0 0 10px;
-    height: 220px;
-    width: 40%;
-    float: left;
+a{
+    color: black !important;
 }
-.article-photo img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: all .6s;
-}
-.article-photo img:hover{
-    transform: scale(1.2);
-}
-
-.article-content{
-    text-align: right;
-    width: calc(60% - 40px);
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    float: left;
-}
-@font-face{
-    font-family: font-NOTO;
-    src: url("./noto-serif-sc-chinese-simplified-400-normal.ttf");
-}
-.article-content-message{
-    font-family: "font-NOTO" !important;
-    line-height: 80%;
-    color: rgb(105, 105, 105);
-}
-.article-content-message span{
-    margin: 0 15px 0 5px;
-}
-.article-content-message a{
-    margin: 0 0 0 5px;
-}
-.article-content-title{
-    font-family: "font-NOTO" !important;
-    font-size: 160%;
-    line-height: 150%;
-}
-@font-face{
-    font-family: font-LXGW;
-    src: url("./LXGWWenKai-Bold.ttf");
-}
-.article-content-abstract{
-    font-family: "font-LXGW";
-    font-size: 105%;
-    color: rgb(85, 85, 85);
-}
-.article-content-abstract-readmore{
-    white-space: nowrap;
-}
-
-a:not(.topan-header a,.topan-menu-option,.topan-footer a){
-    color: black;
-}
-a:not(.topan-header a,.topan-menu-option,.topan-footer a):hover{
+a:hover{
     color: var(--topan-colors-stress) !important;
 }
-a:not(.topan-header a,.topan-menu-option,.topan-footer a):hover::after{
+a:hover::after{
     width: 0 !important;
+}
+.topan-header a:hover{
+    color: black !important;
+}
+.topan-footer a{
+    text-decoration: underline;
+}
+
+.topan-mainpage-auto{
+    width: 70%;
+    max-width: 950px;
+}
+@media screen and (max-width: 750px){
+    .topan-mainpage-auto{
+        width: 80%;
+    }
+}
+@media screen and (max-width: 1300px){
+    .topan-header>.topan-header-left{
+        position: relative;
+        display: inline-block;
+        left: 5px;
+    }
+    .topan-header>.topan-header-right{
+        position: absolute;
+        display: inline-block;
+        right: 5px;
+    }
+}
+@media screen and (min-width: 1300px){
+    .topan-header>.topan-header-left{
+        position: absolute;
+        display: inline-block;
+        left: calc(50% - 475px);
+    }
+    .topan-header>.topan-header-right{
+        position: absolute;
+        display: inline-block;
+        right: calc(50% - 475px);
+    }
 }
