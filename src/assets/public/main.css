@@ -1,6 +1,3 @@
-*:not(.topan-header *,.article *,.article-nophoto *,i,.count-message,.bigtitle){
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Source Han Sans SC,Noto Sans CJK SC,Microsoft YaHei,WenQuanYi Micro Hei,WenQuanYi Zen Hei,Helvetica Neue,Arial,sans-serif;
-}
 @font-face{
     font-family: font-firacode;
     src: url("./FiraCode-Regular.ttf");
@@ -12,6 +9,10 @@
 @font-face{
     font-family: font-NOTO;
     src: url("./noto-serif-sc-chinese-simplified-400-normal.ttf");
+}
+
+*:not(.topan-header *,.article *,.article-nophoto *,i,.count-message,.bigtitle){
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Source Han Sans SC,Noto Sans CJK SC,Microsoft YaHei,WenQuanYi Micro Hei,WenQuanYi Zen Hei,Helvetica Neue,Arial,sans-serif;
 }
 code,pre.ace_editor{
     font-family: "font-firacode";
@@ -32,14 +33,20 @@ pre:not(.remove-style,.ace_editor){
     font-family: "font-NOTO" !important;
 }
 
-a:not(.topan-header a,.topan-menu-option,.topan-footer a){
-    color: black;
+a{
+    color: black !important;
 }
-a:not(.topan-header a,.topan-menu-option,.topan-footer a):hover{
+a:hover{
     color: var(--topan-colors-stress) !important;
 }
-a:not(.topan-header a,.topan-menu-option,.topan-footer a):hover::after{
+a:hover::after{
     width: 0 !important;
+}
+.topan-header a:hover{
+    color: black !important;
+}
+.topan-footer a{
+    text-decoration: underline;
 }
 
 .topan-mainpage-auto{
