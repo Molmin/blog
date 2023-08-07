@@ -7,6 +7,7 @@ const Template=require('./../template.js');
 const highlightjs=require('highlight.js');
 var System=JSON.parse(fs.readFileSync('./data/system.json'));
 var MarkdownIt=require('./../lib/markdown.js');
+const Type=require('./../lib/type.js');
 
 var deleteDir=require('./../lib/deletedir.js');
 
@@ -24,7 +25,7 @@ var blogList=fs.readFileSync('data/blog.json','utf8');
 blogList=JSON.parse(blogList);
 
 ejs.renderFile("./src/templates/blog_list.html",
-    {isadmin: false, fs, blogList, System, MarkdownIt},(err,HTML)=>{
+    {isadmin: false, fs, blogList, System, MarkdownIt, types: Type()},(err,HTML)=>{
     fs.writeFileSync("dist/index.html",
         Template({title: `文章列表`,
                 header: ``},HTML)
