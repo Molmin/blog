@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title id="title">Git & npm & Node.js 安装教程 - Milmon's Blog</title>
+        <link rel="shortcut icon" type="image/x-icon" href="https://topan-dev.github.io/TopanUI/favicon.ico">
+        <script src="https://topan-dev.github.io/TopanUI/src/jquery.js"></script>
+        <link rel="stylesheet" href="https://topan-dev.github.io/TopanUI/topan.css">
+        <script src="https://topan-dev.github.io/TopanUI/topan.js"></script>
+        <script src="https://kit.fontawesome.com/0d8081718e.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <script src="/blog/pub/busuanzi.pure.mini.js"></script>
+        <script src="/blog/pub/main.js"></script>
+        <link rel="stylesheet" href="/blog/pub/main.css">
+        
+    </head>
+    <body>
+        <div class="topan-header">
+            <div class="topan-header-home">
+                <a href="/blog">
+                    <button class="topan-button-ordinary topan-button-commonly topan-button-header-round-left">
+                        <i class="fa fa-home"></i>
+                    </button>
+                </a>
+            </div>
+            <div class="topan-header-left">
+                <span class="topan-header-text">Milmon's Blog&nbsp;</span>
+                <a href="/blog/about">
+                    <span class="topan-button-ordinary topan-button-commonly topan-button-header-block">
+                        <i class="fa fa-solid fa-circle-info"></i>
+                        <span>&nbsp;关于</span>
+                    </span>
+                </a>
+                
+                
+            </div>
+            <div class="topan-header-right">
+            </div>
+        </div>
+        <div class="topan-outer">
+            <div class="topan-page">
+                <div class="topan-mainpage-auto">
+                    <br>
+                    <style>
+    .topan-section-shadow.article{
+        padding: 0;
+    }
+    .article>.article-photo{
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+        border-radius: 10px 10px 0 0;
+    }
+    .article>.article-photo>img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all .6s;
+    }
+    .article>.article-photo>img:hover{
+        transform: scale(1.2);
+    }
+    .article>.article-content{
+        padding: 7px 18px;
+    }
+    .article-content-title{
+        font-family: "font-NOTO" !important;
+        font-size: 160%;
+        line-height: 150%;
+    }
+    
+    .article-content-message{
+        font-family: "font-NOTO" !important;
+        line-height: 80%;
+        color: rgb(105, 105, 105);
+    }
+    .article-content-message span,.article-content-message a{
+        margin: 0 0 0 5px;
+    }
+    .article-content-message i:not(:nth-child(1)){
+        margin: 0 0 0 15px;
+    }
+    .article-content>div:nth-child(3){
+        margin-top: 40px;
+    }
+    .article-content>div:nth-child(3)>h1,
+    .article-content>div:nth-child(3)>h2,
+    .article-content>div:nth-child(3)>h3,
+    .article-content>div:nth-child(3)>h4,
+    .article-content>div:nth-child(3)>h5,
+    .article-content>div:nth-child(3)>h6{
+        font-family: "font-NOTO" !important;
+    }
+    .article-content-type>a{
+        color: grey !important;
+        font-size: 80%;
+    }
+    .article-content-type{
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .cc{
+        margin-top: -10px;
+        background-color: #eee;
+        padding: 7px 18px;
+        overflow: hidden;
+        border-radius: 0 0 10px 10px;
+    }
+    .cc-main{
+        border: 16px solid black;
+        border-radius: 50%;
+        opacity: .1;
+        width: 150px; height: 150px;
+        vertical-align: middle;
+        position: relative;
+        float: right;
+        top: -40px;
+        right: -50px;
+        box-sizing: border-box;
+    }
+    .cc-main::before,.cc-main::after{
+        content: "";
+        border: 12px solid black;
+        border-right-color: transparent;
+        border-radius: 50%;
+        top: 37.5px;
+        width: 18px; height: 18px;
+        position: absolute;
+    }
+    .cc-main::before{
+        left: 20px;
+    }
+    .cc-main::after{
+        right: 20px;
+    }
+    .cc>p:nth-child(2){
+        font-family: "font-NOTO";
+        font-size: 115%;
+    }
+    .cc>p:nth-child(3)>a{
+        text-decoration: underline;
+        font-family: "font-firacode";
+        font-size: 85%;
+    }
+    .cc>p:nth-child(4)>b:nth-child(3){
+        margin: 0 0 0 25px;
+    }
+</style>
+
+<script>
+    $(document).ready(()=>{
+        var cc_article_link=$(".cc>p:nth-child(3)>a");
+        cc_article_link.attr("href",window.location.href);
+        cc_article_link.text(window.location.href);
+    });
+</script>
+
+<div class="row">
+    <div class="column-one-fifth">
+        <div style="padding-right: 12px;">
+            <div class="topan-section-shadow sidebar">
+                <style>
+    .sidebar{
+        text-align: center;
+    }
+    .avatar{
+        margin-top: 15px;
+        width: 100%;
+        max-width: 160px;
+        border-radius: 50%;
+        box-shadow: 0 2px 8px -1px rgb(165, 165, 165);
+        transition: box-shadow .1s ease-in-out, transform 0.8s ease;
+    }
+    .avatar:hover{
+        box-shadow: -1px -1px 7px 2px rgb(156, 156, 156);
+        transform: rotate(360deg);
+    }
+    .name{
+        margin-top: 5px;
+        font-family: "font-NOTO" !important;
+        font-size: 160%;
+    }
+    .signature{
+        margin-top: -10px;
+        font-family: "font-NOTO" !important;
+        font-size: 90%;
+    }
+</style>
+
+<img class="avatar" src="https://molmin.github.io/file/image/head.png">
+<h2 class="name">Milmon</h2>
+<p class="signature">ZJ MOer &amp; OIer</p>
+<a class="topan-menu-option" href="/blog"><i class="fa fa-solid fa-home"></i>&nbsp;&nbsp;首页</a>
+<a class="topan-menu-option" href="/blog/types"><i class="fa fa-solid fa-inbox"></i>&nbsp;&nbsp;分类</a>
+<a class="topan-menu-option" href="/blog/archives"><i class="fa fa-regular fa-folder-closed"></i>&nbsp;&nbsp;归档</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="column-four-fifth">
+        <div style="padding-left: 12px;">
+            <div class="topan-section-shadow article">
+                
+                <div class="article-photo">
+                    <img src="/blog/install_git_npm_nodejs/file/pic.png">
+                </div>
+                
+                <div class="article-content">
+                    <h2 class="article-content-title">Git &amp; npm &amp; Node.js 安装教程</h2>
+                    <p class="article-content-message">
+                        <i class="fa fa-regular fa-folder-closed"></i><a href="/blog/type/technology">技术</a><i class="fa fa-regular fa-calendar-days"></i><span>2023-06-02</span><i class="fa fa-regular fa-file-word"></i><span>? 字</span><i class="fa fa-regular fa-clock"></i><span>? 分钟</span><i class="fa fa-regular fa-eye"></i><span id="busuanzi_value_page_pv">0</span>
+                    </p>
+                    <div>
+                        <p>qwq</p>
+
+                    </div>
+                    <p class="article-content-type"><a href="/blog/type/technology"># 技术</a></p>
+                </div>
+                <div class="cc">
+                    <i class="cc-main"></i>
+                    <p><b>Git &amp; npm &amp; Node.js 安装教程</b></p>
+                    <p><a></a></p>
+                    <p><b>本文作者：</b><a href="https://github.com/Molmin/">Milmon</a><b>发布时间：</b>2023-06-02</p>
+                    <p><b>版权声明：</b>本博客所有文章除特殊说明外，均遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a> 协议。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                    <br>
+                </div>
+                <footer class="topan-footer">
+                    <p></p>
+                    <p style="text-align: center; color: #555; font-size: 12px;">
+                        Powered by <a href="https://github.com/Molmin/OI.git">Molmin/OI</a>&nbsp;&nbsp;&nbsp;
+                        © 2023 <a href="https://github.com/Molmin/">Milmon</a>&nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-solid fa-eye"></i> 访客数量：<span id="busuanzi_value_site_pv">0</span>
+                    </p>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>
+    

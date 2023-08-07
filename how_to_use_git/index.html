@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title id="title">Git 使用教程 - Milmon's Blog</title>
+        <link rel="shortcut icon" type="image/x-icon" href="https://topan-dev.github.io/TopanUI/favicon.ico">
+        <script src="https://topan-dev.github.io/TopanUI/src/jquery.js"></script>
+        <link rel="stylesheet" href="https://topan-dev.github.io/TopanUI/topan.css">
+        <script src="https://topan-dev.github.io/TopanUI/topan.js"></script>
+        <script src="https://kit.fontawesome.com/0d8081718e.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <script src="/blog/pub/busuanzi.pure.mini.js"></script>
+        <script src="/blog/pub/main.js"></script>
+        <link rel="stylesheet" href="/blog/pub/main.css">
+        
+    </head>
+    <body>
+        <div class="topan-header">
+            <div class="topan-header-home">
+                <a href="/blog">
+                    <button class="topan-button-ordinary topan-button-commonly topan-button-header-round-left">
+                        <i class="fa fa-home"></i>
+                    </button>
+                </a>
+            </div>
+            <div class="topan-header-left">
+                <span class="topan-header-text">Milmon's Blog&nbsp;</span>
+                <a href="/blog/about">
+                    <span class="topan-button-ordinary topan-button-commonly topan-button-header-block">
+                        <i class="fa fa-solid fa-circle-info"></i>
+                        <span>&nbsp;关于</span>
+                    </span>
+                </a>
+                
+                
+            </div>
+            <div class="topan-header-right">
+            </div>
+        </div>
+        <div class="topan-outer">
+            <div class="topan-page">
+                <div class="topan-mainpage-auto">
+                    <br>
+                    <style>
+    .topan-section-shadow.article{
+        padding: 0;
+    }
+    .article>.article-photo{
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+        border-radius: 10px 10px 0 0;
+    }
+    .article>.article-photo>img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all .6s;
+    }
+    .article>.article-photo>img:hover{
+        transform: scale(1.2);
+    }
+    .article>.article-content{
+        padding: 7px 18px;
+    }
+    .article-content-title{
+        font-family: "font-NOTO" !important;
+        font-size: 160%;
+        line-height: 150%;
+    }
+    
+    .article-content-message{
+        font-family: "font-NOTO" !important;
+        line-height: 80%;
+        color: rgb(105, 105, 105);
+    }
+    .article-content-message span,.article-content-message a{
+        margin: 0 0 0 5px;
+    }
+    .article-content-message i:not(:nth-child(1)){
+        margin: 0 0 0 15px;
+    }
+    .article-content>div:nth-child(3){
+        margin-top: 40px;
+    }
+    .article-content>div:nth-child(3)>h1,
+    .article-content>div:nth-child(3)>h2,
+    .article-content>div:nth-child(3)>h3,
+    .article-content>div:nth-child(3)>h4,
+    .article-content>div:nth-child(3)>h5,
+    .article-content>div:nth-child(3)>h6{
+        font-family: "font-NOTO" !important;
+    }
+    .article-content-type>a{
+        color: grey !important;
+        font-size: 80%;
+    }
+    .article-content-type{
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .cc{
+        margin-top: -10px;
+        background-color: #eee;
+        padding: 7px 18px;
+        overflow: hidden;
+        border-radius: 0 0 10px 10px;
+    }
+    .cc-main{
+        border: 16px solid black;
+        border-radius: 50%;
+        opacity: .1;
+        width: 150px; height: 150px;
+        vertical-align: middle;
+        position: relative;
+        float: right;
+        top: -40px;
+        right: -50px;
+        box-sizing: border-box;
+    }
+    .cc-main::before,.cc-main::after{
+        content: "";
+        border: 12px solid black;
+        border-right-color: transparent;
+        border-radius: 50%;
+        top: 37.5px;
+        width: 18px; height: 18px;
+        position: absolute;
+    }
+    .cc-main::before{
+        left: 20px;
+    }
+    .cc-main::after{
+        right: 20px;
+    }
+    .cc>p:nth-child(2){
+        font-family: "font-NOTO";
+        font-size: 115%;
+    }
+    .cc>p:nth-child(3)>a{
+        text-decoration: underline;
+        font-family: "font-firacode";
+        font-size: 85%;
+    }
+    .cc>p:nth-child(4)>b:nth-child(3){
+        margin: 0 0 0 25px;
+    }
+</style>
+
+<script>
+    $(document).ready(()=>{
+        var cc_article_link=$(".cc>p:nth-child(3)>a");
+        cc_article_link.attr("href",window.location.href);
+        cc_article_link.text(window.location.href);
+    });
+</script>
+
+<div class="row">
+    <div class="column-one-fifth">
+        <div style="padding-right: 12px;">
+            <div class="topan-section-shadow sidebar">
+                <style>
+    .sidebar{
+        text-align: center;
+    }
+    .avatar{
+        margin-top: 15px;
+        width: 100%;
+        max-width: 160px;
+        border-radius: 50%;
+        box-shadow: 0 2px 8px -1px rgb(165, 165, 165);
+        transition: box-shadow .1s ease-in-out, transform 0.8s ease;
+    }
+    .avatar:hover{
+        box-shadow: -1px -1px 7px 2px rgb(156, 156, 156);
+        transform: rotate(360deg);
+    }
+    .name{
+        margin-top: 5px;
+        font-family: "font-NOTO" !important;
+        font-size: 160%;
+    }
+    .signature{
+        margin-top: -10px;
+        font-family: "font-NOTO" !important;
+        font-size: 90%;
+    }
+</style>
+
+<img class="avatar" src="https://molmin.github.io/file/image/head.png">
+<h2 class="name">Milmon</h2>
+<p class="signature">ZJ MOer &amp; OIer</p>
+<a class="topan-menu-option" href="/blog"><i class="fa fa-solid fa-home"></i>&nbsp;&nbsp;首页</a>
+<a class="topan-menu-option" href="/blog/types"><i class="fa fa-solid fa-inbox"></i>&nbsp;&nbsp;分类</a>
+<a class="topan-menu-option" href="/blog/archives"><i class="fa fa-regular fa-folder-closed"></i>&nbsp;&nbsp;归档</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="column-four-fifth">
+        <div style="padding-left: 12px;">
+            <div class="topan-section-shadow article">
+                
+                <div class="article-content">
+                    <h2 class="article-content-title">Git 使用教程</h2>
+                    <p class="article-content-message">
+                        <i class="fa fa-regular fa-folder-closed"></i><a href="/blog/type/technology">技术</a><i class="fa fa-regular fa-calendar-days"></i><span>2022-10-14</span><i class="fa fa-regular fa-file-word"></i><span>? 字</span><i class="fa fa-regular fa-clock"></i><span>? 分钟</span><i class="fa fa-regular fa-eye"></i><span id="busuanzi_value_page_pv">0</span>
+                    </p>
+                    <div>
+                        <h2>安装</h2>
+<pre><code class="hljs language-shell">sudo apt-get install git
+[sudo] Milmon 的密码： 
+正在读取软件包列表... 完成
+正在分析软件包的依赖关系树       
+正在读取状态信息... 完成       
+git 已经是最新版 (1:2.25.1-1ubuntu3.1)。
+升级了 0 个软件包，新安装了 0 个软件包，要卸载 0 个软件包，有 0 个软件包未被升级。
+</code></pre>
+<p>查看 Git 是否成功安装：</p>
+<pre><code class="hljs language-shell">git
+用法：git [--version] [--help] [-C &lt;path&gt;] [-c &lt;name&gt;=&lt;value&gt;]
+           [--exec-path[=&lt;path&gt;]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=&lt;path&gt;] [--work-tree=&lt;path&gt;] [--namespace=&lt;name&gt;]
+           &lt;command&gt; [&lt;args&gt;]
+
+这些是各种场合常见的 Git 命令：
+
+开始一个工作区（参见：git help tutorial）
+   clone             克隆仓库到一个新目录
+   init              创建一个空的 Git 仓库或重新初始化一个已存在的仓库
+
+在当前变更上工作（参见：git help everyday）
+   add               添加文件内容至索引
+   mv                移动或重命名一个文件、目录或符号链接
+   restore           恢复工作区文件
+   rm                从工作区和索引中删除文件
+   sparse-checkout   初始化及修改稀疏检出
+
+检查历史和状态（参见：git help revisions）
+   bisect            通过二分查找定位引入 bug 的提交
+   diff              显示提交之间、提交和工作区之间等的差异
+   grep              输出和模式匹配的行
+   log               显示提交日志
+   show              显示各种类型的对象
+   status            显示工作区状态
+
+扩展、标记和调校您的历史记录
+   branch            列出、创建或删除分支
+   commit            记录变更到仓库
+   merge             合并两个或更多开发历史
+   rebase            在另一个分支上重新应用提交
+   reset             重置当前 HEAD 到指定状态
+   switch            切换分支
+   tag               创建、列出、删除或校验一个 GPG 签名的标签对象
+
+协同（参见：git help workflows）
+   fetch             从另外一个仓库下载对象和引用
+   pull              获取并整合另外的仓库或一个本地分支
+   push              更新远程引用和相关的对象
+
+命令 &#x27;git help -a&#x27; 和 &#x27;git help -g&#x27; 显示可用的子命令和一些概念帮助。
+查看 &#x27;git help &lt;命令&gt;&#x27; 或 &#x27;git help &lt;概念&gt;&#x27; 以获取给定子命令或概念的
+帮助。
+有关系统的概述，查看 &#x27;git help git&#x27;。
+</code></pre>
+<h2>初始化</h2>
+<h4>初始化 Git</h4>
+<p>配置 Git：</p>
+<pre><code class="hljs language-shell">git config --global user.name &quot;Molmin&quot;
+git config --global user.email &quot;milmon@qq.com&quot;
+</code></pre>
+<h4>绑定 GitHub</h4>
+<pre><code class="hljs language-shell">ssh-keygen -t rsa -C &quot;milmon@qq.com&quot;
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/noilinux/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/noilinux/.ssh/id_rsa
+Your public key has been saved in /home/noilinux/.ssh/id_rsa.pub
+The key fingerprint is:
+...
+The key&#x27;s randomart image is:
+...
+</code></pre>
+<p>然后复制根目录下 <code class="hljs"><span class="hljs-title">.ssh/id_rsa.pub</span></code>，在 <code class="hljs">https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/settings/</span>keys</code> 页面，点击 New SSH Key，Title 任意，Key 输入复制内容，确定即可。</p>
+<p>检验是否绑定成功：</p>
+<pre><code class="hljs language-shell">ssh -T git@github.com
+...
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Hi Molmin! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.
+</code></pre>
+<h4>本地库初始化</h4>
+<p>在指定文件夹打开终端，输入如下指令：</p>
+<pre><code class="hljs language-shell">git init
+已初始化空的 Git 仓库于 /home/Milmon/桌面/github/molmin.github.io/.git/
+</code></pre>
+<h4>GitHub 项目关联初始化</h4>
+<p>删除所有关联：</p>
+<pre><code class="hljs language-shell">git remote rm origin
+</code></pre>
+<p>添加关联：</p>
+<pre><code class="hljs language-shell">git remote add origin git@github.com:Molmin/molmin.github.io.git
+</code></pre>
+<p>查看当前所有关联：</p>
+<pre><code class="hljs language-shell">git remote -v
+origin	git@github.com:Molmin/molmin.github.io.git (fetch)
+origin	git@github.com:Molmin/molmin.github.io.git (push)
+</code></pre>
+<h2>上传更新</h2>
+<p>本地开发后，输入如下指令查看当前项目状态：</p>
+<pre><code class="hljs language-shell">git status
+位于分支 master
+您的分支与上游分支 &#x27;origin/master&#x27; 一致。
+
+尚未暂存以备提交的变更：
+  （使用 &quot;git add &lt;文件&gt;...&quot; 更新要提交的内容）
+  （使用 &quot;git restore &lt;文件&gt;...&quot; 丢弃工作区的改动）
+	修改：     index.html
+
+修改尚未加入提交（使用 &quot;git add&quot; 和/或 &quot;git commit -a&quot;）
+</code></pre>
+<p>输入如下指令提交暂存：</p>
+<pre><code class="hljs language-shell">git add --all
+</code></pre>
+<p>此时再次查看项目状态，应为：</p>
+<pre><code class="hljs language-shell">git status
+位于分支 master
+您的分支与上游分支 &#x27;origin/master&#x27; 一致。
+
+要提交的变更：
+  （使用 &quot;git restore --staged &lt;文件&gt;...&quot; 以取消暂存）
+	修改：     index.html
+</code></pre>
+<p>提交更新指令（引号内为更新内容说明）：</p>
+<pre><code class="hljs language-shell">git commit -m &quot;Update&quot;
+[master 4a98023] Update
+ ... files changed, ... insertions(+), ... deletions(-)
+ create mode 100644 index.html
+ ...
+</code></pre>
+<p>接着进行最终上传，例如：</p>
+<pre><code class="hljs language-shell">git push origin master
+枚举对象中: 21, 完成.
+对象计数中: 100% (21/21), 完成.
+压缩对象中: 100% (11/11), 完成.
+写入对象中: 100% (11/11), 1.82 KiB | 116.00 KiB/s, 完成.
+总共 11 （差异 10），复用 0 （差异 0）
+remote: Resolving deltas: 100% (10/10), completed with 9 local objects.
+To github.com:Molmin/molmin.github.io.git
+   7aff64d..4a98023  master -&gt; master
+</code></pre>
+<p>注：若是第一次，需使用指令：</p>
+<pre><code class="hljs language-shell">git push -u origin master
+</code></pre>
+<h2>下载更新</h2>
+<pre><code class="hljs language-shell">git pull -s subtree origin master
+remote: Enumerating objects: 444, done.
+remote: Counting objects: 100% (37/37), done.
+remote: Compressing objects: 100% (23/23), done.
+remote: Total 444 (delta 17), reused 29 (delta 14), pack-reused 407
+接收对象中: 100% (444/444), 107.76 MiB | 1.13 MiB/s, 完成.
+处理 delta 中: 100% (31/31), 完成.
+来自 github.com:Molmin/molmin.github.io
+ * branch            master     -&gt; FETCH_HEAD
+ * [新分支]          master     -&gt; origin/master
+</code></pre>
+<h2>子项目</h2>
+<p>也许你用不到这个板块的内容。</p>
+<p>创建一个子项目：</p>
+<pre><code class="hljs language-shell">git submodule add git@github.com:topan-dev/TopanUI f/system/ui
+</code></pre>
+<p>也可以使用 <code class="hljs">-<span class="hljs-keyword">b</span> master</code> 指定分支。</p>
+<p>如下载时没有自动下载子项目，可以执行：</p>
+<pre><code class="hljs language-shell">git submodule init
+git submodule update
+</code></pre>
+<p>更新子目录的分支：（更新全部）</p>
+<pre><code class="hljs language-shell">git submodule update --init --recursive
+</code></pre>
+<p>用进入子目录从而更新子模块的方式亦可：</p>
+<pre><code class="hljs language-shell">cd mod
+git checkout master
+git pull origin master
+cd ..
+</code></pre>
+<p>删除子分支：</p>
+<pre><code class="hljs language-shell">git submodule deinit -f &lt;gitsub&gt;
+</code></pre>
+<p>注：以上 <code class="hljs"><span class="hljs-section">&lt;gitsub&gt;</span></code> 代表子分支名。</p>
+
+                    </div>
+                    <p class="article-content-type"><a href="/blog/type/technology"># 技术</a></p>
+                </div>
+                <div class="cc">
+                    <i class="cc-main"></i>
+                    <p><b>Git 使用教程</b></p>
+                    <p><a></a></p>
+                    <p><b>本文作者：</b><a href="https://github.com/Molmin/">Milmon</a><b>发布时间：</b>2022-10-14</p>
+                    <p><b>版权声明：</b>本博客所有文章除特殊说明外，均遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a> 协议。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                    <br>
+                </div>
+                <footer class="topan-footer">
+                    <p></p>
+                    <p style="text-align: center; color: #555; font-size: 12px;">
+                        Powered by <a href="https://github.com/Molmin/OI.git">Molmin/OI</a>&nbsp;&nbsp;&nbsp;
+                        © 2023 <a href="https://github.com/Molmin/">Milmon</a>&nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-solid fa-eye"></i> 访客数量：<span id="busuanzi_value_site_pv">0</span>
+                    </p>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>
+    
