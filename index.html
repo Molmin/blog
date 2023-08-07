@@ -45,7 +45,199 @@
             <div class="topan-page">
                 <div class="topan-mainpage-auto">
                     <br>
-                    undefined
+                    <style>
+    .page-select-up,.page-select-down{
+        box-sizing: inherit;
+        display: block;
+    }
+    ul{
+        font-size: 14px;
+        text-align: center;
+        list-style: none;
+        margin: 0;
+    }
+    ul>li{
+        display: inline-block;
+        padding: 6px 10px;
+        transition-duration: 0.15s;
+        cursor: pointer;
+        color: grey;
+    }
+    .page-select-up>ul>li{
+        border-bottom: solid 2px rgb(175, 175, 175);
+    }
+    .page-select-down>ul>li{
+        border-top: solid 2px rgb(175, 175, 175);
+    }
+    ul>span{
+        padding: 6px;
+        color: grey;
+    }
+    ul>li:hover{
+        background-color: rgba(0,0,0,0.05);
+        color: var(--topan-colors-main);
+    }
+    .page-select-up>ul>li:hover{
+        border-bottom: solid 2px var(--topan-colors-main);
+    }
+    .page-select-down>ul>li:hover{
+        border-top: solid 2px var(--topan-colors-main);
+    }
+    ul>li.topan-tab-showed{
+        color: var(--topan-colors-stress);
+    }
+    .page-select-up>ul>li.topan-tab-showed{
+        border-bottom: solid 2px var(--topan-colors-stress);
+    }
+    .page-select-down>ul>li.topan-tab-showed{
+        border-top: solid 2px var(--topan-colors-stress);
+    }
+    .page-select-up>ul>li.topan-tab-showed:hover{
+        border-bottom: solid 2px var(--topan-colors-stress);
+    }
+    .page-select-down>ul>li.topan-tab-showed:hover{
+        border-top: solid 2px var(--topan-colors-stress);
+    }
+
+    .topan-section-shadow.article{
+        padding: 0;
+        height: 220px;
+    }
+    .topan-section-shadow:before,.topan-section-shadow:after{
+        content: " ";
+        display: table;
+    }
+    .article-photo{
+        overflow: hidden;
+        border-radius: 10px 0 0 10px;
+        height: 220px;
+        width: 40%;
+        float: left;
+    }
+    .article-photo img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all .6s;
+        cursor: pointer;
+    }
+    .article-photo img:hover{
+        transform: scale(1.2);
+    }
+
+    .article-content{
+        text-align: right;
+        width: calc(60% - 40px);
+        height: calc(100% - 16px);
+        overflow-y: auto;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        float: left;
+    }
+    .article-content-message{
+        font-family: "font-NOTO" !important;
+        line-height: 80%;
+        color: rgb(105, 105, 105);
+    }
+    .article-content-message span,.article-content-message a{
+        margin: 0 0 0 5px;
+    }
+    .article-content-message i:not(:nth-child(1)){
+        margin: 0 0 0 15px;
+    }
+    .article-content-title{
+        font-family: "font-NOTO" !important;
+        font-size: 160%;
+        line-height: 150%;
+    }
+    .article-content-abstract{
+        font-family: "font-LXGW";
+        font-size: 105%;
+        color: rgb(85, 85, 85);
+    }
+    .article-content-abstract-readmore{
+        white-space: nowrap;
+    }
+</style>
+
+<div class="row">
+    <div class="column-one-fifth">
+        <div style="padding-right: 12px;">
+            <div class="topan-section-shadow sidebar">
+                <style>
+    .sidebar{
+        text-align: center;
+    }
+    .avatar{
+        margin-top: 15px;
+        width: 100%;
+        max-width: 160px;
+        border-radius: 50%;
+        box-shadow: 0 2px 8px -1px rgb(165, 165, 165);
+        transition: box-shadow .1s ease-in-out, transform 0.8s ease;
+    }
+    .avatar:hover{
+        box-shadow: -1px -1px 7px 2px rgb(156, 156, 156);
+        transform: rotate(360deg);
+    }
+    .name{
+        margin-top: 5px;
+        font-family: "font-NOTO" !important;
+        font-size: 160%;
+    }
+    .signature{
+        margin-top: -10px;
+        font-family: "font-NOTO" !important;
+        font-size: 90%;
+    }
+</style>
+
+<img class="avatar" src="https://molmin.github.io/file/image/head.png">
+<h2 class="name">Milmon</h2>
+<p class="signature">ZJ MOer &amp; OIer</p>
+<a class="topan-menu-option" href="/blog"><i class="fa fa-solid fa-home"></i>&nbsp;&nbsp;首页</a>
+<a class="topan-menu-option" href="/blog/types"><i class="fa fa-solid fa-inbox"></i>&nbsp;&nbsp;分类</a>
+<a class="topan-menu-option" href="/blog/archives"><i class="fa fa-regular fa-folder-closed"></i>&nbsp;&nbsp;归档</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="column-four-fifth">
+        <div style="padding-left: 12px;">
+            <p class="count-message">共 <span id="count">2</span> 篇文章</p>
+            
+                <div class="topan-section-shadow article">
+                    
+                        <div class="article-photo">
+                            <a href="/blog/install_git_npm_nodejs"><img src="/blog/install_git_npm_nodejs/file/pic.png"></a>
+                        </div>
+                        <div class="article-content">
+                            <p class="article-content-message">
+                                <i class="fa fa-regular fa-folder-closed"></i><a href="/blog/type/technology">技术</a><i class="fa fa-regular fa-calendar-days"></i><span>2023-06-02</span><i class="fa fa-regular fa-clock"></i><span>? 字</span><i class="fa fa-regular fa-clock"></i><span>? 分钟</span>
+                            </p>
+                            <h2 class="article-content-title"><a href="/blog/install_git_npm_nodejs">Git &amp; npm &amp; Node.js 安装教程</a></h2>
+                            <p class="article-content-abstract">我们常常因为网络、系统环境原因而无法成功安装一些不能缺少的软件。本文将介绍一种上述三款常用软件的安装方案。<a href="/blog/install_git_npm_nodejs" class="article-content-abstract-readmore">阅读更多 »</a></p>
+                        </div>
+                    
+                </div>
+            <br>
+                <div class="topan-section-shadow article-nophoto">
+                    
+                        <div class="article-content-nophoto">
+                            <p class="article-content-message">
+                                <i class="fa fa-regular fa-folder-closed"></i><a href="/blog/type/technology">技术</a><i class="fa fa-regular fa-calendar-days"></i><span>2022-10-14</span><i class="fa fa-regular fa-clock"></i><span>? 字</span><i class="fa fa-regular fa-clock"></i><span>? 分钟</span>
+                            </p>
+                            <h2 class="article-content-title"><a href="/blog/how_to_use_git">Git 使用教程</a></h2>
+                            <p class="article-content-abstract">Git 是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。本文将介绍 Git 的使用方法。<a href="/blog/how_to_use_git" class="article-content-abstract-readmore">阅读更多 »</a></p>
+                        </div>
+                    
+                </div>
+            
+        </div>
+    </div>
+</div>
                     <br>
                 </div>
                 <footer class="topan-footer">
