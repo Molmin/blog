@@ -7,7 +7,6 @@ module.exports = () => {
     var System = JSON.parse(fs.readFileSync('./data/system.json'));
     var MarkdownIt = require('./../lib/markdown.js');
     const Type = require('./../lib/type.js');
-
     var deleteDir = require('./../lib/deletedir.js');
 
     deleteDir("dist");
@@ -25,7 +24,7 @@ module.exports = () => {
 
     ejs.renderFile(
         "./src/templates/blog_list.html",
-        { isadmin: false, fs, blogList, System, MarkdownIt, types: Type() }, 
+        { isadmin: false, fs, blogList, System, MarkdownIt, types: Type() },
         (err, HTML) => {
             fs.writeFileSync("dist/index.html",
                 Template({
@@ -34,7 +33,7 @@ module.exports = () => {
                 }, HTML)
             );
         }
-        );
+    );
 
     ejs.renderFile(
         "./src/templates/about.html",
